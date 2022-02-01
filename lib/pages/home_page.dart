@@ -8,7 +8,6 @@ class Homepage extends StatelessWidget {
   final String name = "Catalog App";
   const Homepage({Key? key}) : super(key: key);
 
-//Test
   @override
   Widget build(BuildContext context) {
     final dummyList = List.generate(5, (index) => CatalogModel.items[0]);
