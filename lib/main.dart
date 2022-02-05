@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Test App',
       // home: Homepage(),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       // darkTheme: ThemeData(brightness: Brightness.dark ),
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
