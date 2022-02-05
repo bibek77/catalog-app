@@ -12,7 +12,9 @@ class HomeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -53,6 +55,8 @@ class HomeDetailsPage extends StatelessWidget {
                         .bold
                         .make(),
                     catalog.desc.text.caption(context).xl.make(),
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book".text.align(TextAlign.justify).make().p16(),
+                    10.heightBox
                   ],
                 ).py64(),
               ),
