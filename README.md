@@ -1,6 +1,6 @@
-# flutter_catalog
+# Catalog Application
 
-A new Flutter project.
+A Catalog Application developed in Flutter.
 
 ## Getting Started
 
