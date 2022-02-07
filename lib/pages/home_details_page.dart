@@ -15,13 +15,13 @@ class HomeDetailsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
                 alignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  "\$${catalog.price}".text.bold.xl4.make(),
+                  "\$${catalog.price}".text.color(context.cupertinoTheme.primaryColor).bold.xl4.make(),
                   ElevatedButton(
                       onPressed: () {},
                       style: ButtonStyle(
@@ -46,7 +46,7 @@ class HomeDetailsPage extends StatelessWidget {
               arcType: VxArcType.CONVEY,
               edge: VxEdge.TOP,
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
                 child: Column(
                   children: [
