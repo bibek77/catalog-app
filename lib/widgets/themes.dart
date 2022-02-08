@@ -13,7 +13,8 @@ class MyTheme {
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black),
         toolbarTextStyle: Theme.of(context).textTheme.bodyText2,
-        titleTextStyle: Theme.of(context).textTheme.headline6,
+        // titleTextStyle: Theme.of(context).textTheme.headline6,
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20)
       )
       // primaryTextTheme: GoogleFonts.latoTextTheme()
       );
@@ -27,9 +28,11 @@ class MyTheme {
       appBarTheme: AppBarTheme(
         color: Colors.black,
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.white),
         toolbarTextStyle: Theme.of(context).textTheme.bodyText2,
-        titleTextStyle: Theme.of(context).textTheme.headline6,
+        // titleTextStyle: Theme.of(context).textTheme.headline5
+        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20)
+        
       )
       );
 
