@@ -64,8 +64,12 @@ class __cartListState extends State<_cartList> {
       itemBuilder: (context, index) => ListTile(
         leading: Icon(Icons.done),
         trailing: IconButton(
-            onPressed: () {}, icon: Icon(Icons.remove_circle_outline)),
-            title: "Item 1".text.make(),
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: "Buying not supported yet".text.make()));
+            },
+            icon: Icon(Icons.remove_circle_outline)),
+        title: "Item 1".text.make(),
       ),
     );
   }
