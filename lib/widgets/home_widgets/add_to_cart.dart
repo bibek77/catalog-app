@@ -25,7 +25,7 @@ class _AddToCartState extends State<AddToCart> {
           if (!isInCart) {
             isInCart = isInCart.toggle();
             final _catalog = CatalogModel();
-            _cart.catalog = _catalog; 
+            _cart.catalog = _catalog;
             _cart.add(widget.catalog);
             setState(() {});
           }
