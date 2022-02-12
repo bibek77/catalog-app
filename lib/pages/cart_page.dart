@@ -44,7 +44,8 @@ class _CartTotal extends StatelessWidget {
                   .xl5
                   .color(context.cupertinoTheme.primaryColor)
                   .make();
-            }, mutations: {RemoveMutation},
+            },
+            mutations: {RemoveMutation},
           ),
           30.widthBox,
           ElevatedButton(
