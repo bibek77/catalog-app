@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_catalog/core/store.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'dart:convert';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/utils/routes.dart';
-import 'package:flutter_catalog/widgets/drawer.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_list.dart';
-import 'package:flutter_catalog/widgets/item_widget.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
-
+import 'package:http/http.dart' as http;
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -24,6 +23,8 @@ class _HomepageState extends State<Homepage> {
 
   final String name = "Catalog App";
 
+  // final url = "https://api.jsonbin.io/b/604dbddb683e7e079c4eefd3";
+
   @override
   void initState() {
     super.initState();
@@ -34,6 +35,8 @@ class _HomepageState extends State<Homepage> {
     await Future.delayed(Duration(seconds: 2));
     final catalogJson =
         await rootBundle.loadString("assests/files/catalog.json");
+    // final response = await http.get(Uri.parse(url));
+    // final catalogJson = response.body;
     final decodeData = jsonDecode(catalogJson);
     var productsData = decodeData["products"];
     CatalogModel.items = List.from(productsData)
@@ -44,13 +47,24 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = (VxState.store as MyStore).cart;
     // final dummyList = List.generate(5, (index) => CatalogModel.items[0]);
     return Scaffold(
       backgroundColor: context.canvasColor,
-      floatingActionButton: FloatingActionButton(onPressed: () => 
-      Navigator.pushNamed(context, MyRoutes.cartRoute),
-      backgroundColor: context.cupertinoTheme.primaryColor,
-      child: Icon(CupertinoIcons.cart),
+      floatingActionButton: VxBuilder(
+        mutations: {AddMutation, RemoveMutation},
+        builder: (context, store, status) => FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          backgroundColor: context.cupertinoTheme.primaryColor,
+          child: Icon(CupertinoIcons.cart),
+        ).badge(
+            color: Colors.amber,
+            size: 22,
+            count: _cart.items.length,
+            textStyle: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            )),
       ),
       body: SafeArea(
         child: Container(
@@ -62,8 +76,7 @@ class _HomepageState extends State<Homepage> {
               if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
                 CatalogList().expand()
               else
-                 CircularProgressIndicator().centered().expand(),
-    
+                CircularProgressIndicator().centered().expand(),
             ],
           ),
         ),
@@ -127,7 +140,3 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
-
-
-
-
